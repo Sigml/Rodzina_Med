@@ -1,0 +1,72 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='pl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodzina Med</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'script/script.js' %}"></script> 
+</head>
+
+<body>
+    <header class='header-container'>
+        <div class='logo'>
+           <a href='/' class="logo-link"><h1>Rodzina Med</h1></a>
+        </div>
+        <div class='login-container'>
+            {% if user.is_authenticated %}
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="User Avatar" width="50" height="50">
+                {% endif %}
+                <a href="{% url 'user_info' %}">Witaj, {{ user.username }}</a>
+                <br> <a href="{% url 'logout' %}">Wyłoguj się</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class='main-container'>
+
+        <div class='top_column'>
+            <div class="button-container">
+                <button type='submit'>Lekarż rodziny</button>
+                <button type='submit'>Pediatra</button>
+                <button type='submit'>Pielęgniarka środowiskowa</button>
+            </div>
+        </div>
+
+        <div class='left_column'>
+            <button type='submit'>przytisk 1</button>
+            <button type='submit'>przytisk 2</button>
+            <button type='submit'>przytisk 3</button>
+            <button type='submit'>przytisk 4</button>
+            <button type='submit'>przytisk 5</button>
+            <button type='submit'>przytisk 6</button>
+            <button type='submit'>przytisk 7</button>
+        </div>
+
+        <div class='center_column'>
+            {% block content %}
+
+            {% endblock %} 
+        </div>
+
+        <div class='right_column'>
+            <div class="pc-only">
+                <div id="clock"></div>
+                <div id="calendar-controls">
+                    <button id="prev-month">&lt;</button>
+                    <h2 id="current-month-year">Nazwa Miesiąca 2024</h2>
+                    <button id="next-month">&gt;</button>
+                </div>
+                <div id="calendar"></div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
