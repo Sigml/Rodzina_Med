@@ -15,21 +15,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
 from main.views import (main, PostCreateView)
-from users.views import (RegisterView, LoginView, LogoutView, UserInfoView, EmailVerifyView, ResetPasswordView, ResetPasswordV2View, UserProfileUpdateView)
+from users.views import (RegisterView, LoginView, LogoutView, UserInfoView, EmailVerifyView, ResetPasswordView, 
+                         ResetPasswordV2View, UserProfileUpdateView, UserListView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main, name='main'),
-    path('registration', RegisterView.as_view(), name='registration'),
+    path('user/registration', RegisterView.as_view(), name='registration'),
     path('confirm_email/', TemplateView.as_view(template_name='confirm_email.html'), name='confirm_email'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('info/', UserInfoView.as_view(), name='user_info'),
+    path('user/info/', UserInfoView.as_view(), name='user_info'),
     path('verify_email/<uidb64>/<token>/', EmailVerifyView.as_view(), name='verify_email'),
     path('invalid_verify/', TemplateView.as_view(template_name='invalid_verify.html'), name='invalid_verify'),
     path('reset_password/', ResetPasswordView.as_view(), name='reset_password'),
-    path('create_post/', PostCreateView.as_view(), name='create_view')
+    path('reset_password/<uidb64>/<token>/', ResetPasswordV2View.as_view(), name='reset_password'),
+    path('user/update/', UserProfileUpdateView.as_view(), name='user_update'),
+    path('create_post/', PostCreateView.as_view(), name='create_view'),
+    path('users/', UserListView.as_view(), name='user_list'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

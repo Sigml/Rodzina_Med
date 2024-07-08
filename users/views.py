@@ -9,16 +9,22 @@ from .utils import send_email_verify, send_email_reset_password
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib import messages
 from django.views import View
-from django.views.generic import UpdateView
-from django.views.generic.edit import FormView
-from .forms import UserCreationForm, LoginUserForm, SearchUserForm, ResetPasswordForm, InfoUpdateUserForm
+from django.views.generic import UpdateView, ListView
+from django.views.generic.edit import FormMixin
+from .forms import UserCreationForm, LoginUserForm, SearchUserForm, ResetPasswordForm, InfoUpdateUserForm, UserStaffChangeForm
 from .models import CustomUser
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin
+
 
 import logging
 
 logger = logging.getLogger(__name__)
 
+class AdminRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff
+    
 
 class RegisterView(View):
     def get(self, request):
@@ -184,13 +190,10 @@ class UserInfoView(View):
                 'email': request.user.email,
                 'first_name': request.user.first_name,
                 'last_name': request.user.last_name,
-                'date_of_birth': request.user.date_of_birth,
-                'number_phone': request.user.number_phone,
-                'profile_picture': request.user.profile_picture,
-                'description': request.user.description,
+
             }
 
-            return render(request, 'user_info.html', {'form': user_info})
+            return render(request, 'user_info.html', {'user_info': user_info})
 
         else:
             return redirect('login')
@@ -211,3 +214,24 @@ class UserProfileUpdateView(UpdateView):
             form.instance.profile_picture = profile_picture
 
         return super().form_valid(form)
+
+
+class UserListView(AdminRequiredMixin, ListView, FormMixin):
+    model = CustomUser
+    template_name = 'user_list.html'
+    context_object_name = 'users'
+    form_class = UserStaffChangeForm 
+
+    def get_queryset(self):
+        return CustomUser.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            user_id = form.cleaned_data['user_id']
+            is_staff = form.cleaned_data['is_staff']
+            user = get_user_model().objects.get(pk=user_id)
+            user.is_staff = is_staff
+            user.save()
+            return redirect(reverse_lazy('user_list'))
+        return self.get(request, *args, **kwargs)

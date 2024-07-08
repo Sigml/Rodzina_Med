@@ -1,5 +1,6 @@
 from django import forms
 from .models import CustomUser
+from django.contrib.auth import authenticate, get_user_model
 
 
 class UserCreationForm(forms.ModelForm):
@@ -64,14 +65,22 @@ class LoginUserForm(forms.Form):
         'class':'form-control',
     }))
     
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        if email and password:
+            user = authenticate(email=email, password=password)
+            if not user:
+                raise forms.ValidationError('Nieprawidłowy email lub hasło')
+        return cleaned_data
+    
 
 class SearchUserForm(forms.Form):
     email = forms.CharField(label='Podaj swoj email', widget=forms.TextInput(attrs={
         'class':'form-control',
     }))
-    
-    
-    
     
 
 class ResetPasswordForm(forms.Form):
@@ -95,19 +104,14 @@ class ResetPasswordForm(forms.Form):
     
 
 class InfoUpdateUserForm(forms.ModelForm):
-    password_confirmation = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class':'form-control',
-    }))
         
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'profile_picture', 'password', 'password_confirmation',]
+        fields = ['profile_picture', 'first_name', 'last_name']
         labels = {
             'first_name':'Imię',
             'last_name':'Nazwiśko',
             'profile_picture': 'Zdięcie', 
-            'password':'password', 
-            'password_confirmation':'Powtórz hasło',
         }
         widgets = {
             'first_name': forms.TextInput(attrs={
@@ -119,8 +123,19 @@ class InfoUpdateUserForm(forms.ModelForm):
             'profile_picture': forms.ClearableFileInput(attrs={
                 'class':'form-control',
             }),
-            'password': forms.PasswordInput(attrs={
-                'class':'form-control',
-            }),
         }
         
+        
+class UserStaffChangeForm(forms.Form):
+    user_id = forms.IntegerField(widget=forms.HiddenInput())
+    is_staff = forms.BooleanField(label='Is Staff', required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user_id'].widget.attrs.update({'class': 'user-id-field'})
+
+    def clean_user_id(self):
+        user_id = self.cleaned_data['user_id']
+        if not get_user_model().objects.filter(pk=user_id).exists():
+            raise forms.ValidationError('Nie znaleziono uzytkownika o dannym ID')
+        return user_id

@@ -27,6 +27,11 @@
     </header>
 
     <div class='main-container'>
+        {% if user.is_staff %}
+        <div class="staff_link">
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+        </div>
+        {% endif %}
 
         <div class='top_column'>
             <div class="button-container">

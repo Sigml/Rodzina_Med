@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="user-info-container">
+        <div class="user-info">
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="User Avatar" width="50" height="50">
+            {% else %}
+                <span class="avatar-placeholder">User Avatar</span>
+            {% endif %}
+            <p><strong>Username:</strong> {{ user_info.username }}</p>
+            <p><strong>Email:</strong> {{ user_info.email }}</p>
+            <p><strong>First Name:</strong> {{ user_info.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user_info.last_name }}</p>
+            <h3>Aktualizuj <a href="{% url 'user_update' %}">dane</a></h3>
+            <h3>Zmień <a href="{% url 'reset_password' %}">hasło</a></h3>
+        </div>
+    </div>
+{% endblock %}
