@@ -19,9 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
-from main.views import (main, PostCreateView)
+from main.views import (main, DoctorCreateView, DoctorListView, DoctorUpdateView, DoctorDeleteView, PostCreateView, )
 from users.views import (RegisterView, LoginView, LogoutView, UserInfoView, EmailVerifyView, ResetPasswordView, 
-                         ResetPasswordV2View, UserProfileUpdateView, UserListView)
+                         ResetPasswordV2View, UserProfileUpdateView, UserListView,)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,8 +36,12 @@ urlpatterns = [
     path('reset_password/', ResetPasswordView.as_view(), name='reset_password'),
     path('reset_password/<uidb64>/<token>/', ResetPasswordV2View.as_view(), name='reset_password'),
     path('user/update/', UserProfileUpdateView.as_view(), name='user_update'),
-    path('create_post/', PostCreateView.as_view(), name='create_view'),
     path('users/', UserListView.as_view(), name='user_list'),
+    path('doctor_create/', DoctorCreateView.as_view(), name='doctor_create'),
+    path('doctor_list/', DoctorListView.as_view(), name='doctor_list'),
+    path('doctor_update/', DoctorUpdateView.as_view(), name='doctor_update'),
+    path('doctor_delete/', DoctorDeleteView.as_view(), name='doctor_delete'),
+    path('post_create/', PostCreateView.as_view(), name='post_create'),
 ]
 
 

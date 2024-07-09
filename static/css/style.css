@@ -6,6 +6,7 @@ body {
     color: #ff8800;
 }
 
+
 .header-container {
     background-color: #ff8800;
     padding: 10px 20px;
@@ -13,6 +14,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .logo h1 {
     margin: 0;
@@ -22,173 +24,6 @@ body {
 .logo-link {
     text-decoration: none; 
     color: #000; 
-}
-
-.login-container {
-    color: #000;
-}
-
-.login-container a {
-    color: #030302;
-    text-decoration: none;
-    margin-right: 10px;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
-}
-
-.login-container img {
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.main-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-}
-
-.top_column {
-    width: 100%;
-    background-color: #ffffff; 
-    padding: 10px;
-    text-align: center;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.button-container button {
-    margin: 5px;
-    padding: 10px 20px; 
-    background-color: #ff8800; 
-    color: #000;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 20px; 
-}
-
-.button-container button:hover {
-    background-color: #ce5d01;
-}
-
-.left_column {
-    width: 200px; 
-    background-color: #ffffff; 
-    padding: 10px;
-}
-
-.left_column button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #ff8800;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: left;
-    border-radius: 20px; 
-}
-
-.left_column button:hover {
-    background-color: #ce5d01; 
-}
-
-.right_column {
-    width: 200px; 
-    background-color: #ffffff; 
-    padding: 30px;
-    text-align: center;
-}
-
-.pc-only {
-    display: block;
-}
-
-.center_column {
-    display: block;
-    width: 60%;
-    text-align: center;
-    margin-top: 50px;
-
-}
-
-@media screen and (max-width: 768px) {
-    .pc-only {
-        display: none;
-    }
-}
-
-#clock {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
-#calendar-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-#calendar-controls button {
-    padding: 5px 10px;
-    background-color: #ff8800;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-#calendar-controls button:hover {
-    background-color: #FF8C00;
-}
-
-#calendar table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#calendar th, #calendar td {
-    padding: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-#calendar th {
-    background-color: #ff8800;
-    color: #000;
-}
-
-#calendar td:hover {
-    background-color: #FFA500;
-    color: #000;
-    cursor: pointer;
-}
-
-
-@media screen and (max-width: 768px) {
-    .header-container {
-        border-right: none;
-    }
-
-
-    .left_column, .right_column {
-        width: 100%;
-        margin-bottom: 20px; 
-    }
-
-    .left_column button {
-        width: auto; 
-    }
 }
 
 
@@ -220,7 +55,7 @@ body {
 }
 
 
-.form-group input[type="text"],
+.form-group input[type="text"] textarea, select, input[type="file"],
 .form-group input[type="email"],
 .form-group input[type="password"] {
     width: 80%;
@@ -258,22 +93,195 @@ body {
     background-color: rgb(235, 153, 2);
 }
 
+
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.top_column {
+    width: 100%;
+    background-color: #ffffff; 
+    padding: 10px;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    text-decoration: none
+}
+
+.button-container a {
+    margin: 5px;
+    padding: 10px 20px; 
+    background-color: #ff8800; 
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px; 
+    text-decoration: none;
+}
+
+.button-container a:hover {
+    background-color: #ce5d01;
+}
+
+.left_column {
+    width: 200px; 
+    background-color: #ffffff; 
+    padding: 10px;
+}
+
+.left_column a {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ff8800;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    border-radius: 20px; 
+    text-decoration: none
+}
+
+.left_column a:hover {
+    background-color: #ce5d01; 
+}
+
+.right_column {
+    width: 200px; 
+    background-color: #ffffff; 
+    padding: 30px;
+    text-align: center;
+}
+
+.pc-only {
+    display: block;
+}
+
+.center_column {
+    display: block;
+    width: 60%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+#clock {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+#calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar-controls button {
+    padding: 5px 10px;
+    background-color: #ff8800;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#calendar-controls button:hover {
+    background-color: #FF8C00;
+}
+
+
+#calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendar th, #calendar td {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+#calendar th {
+    background-color: #ff8800;
+    color: #000;
+}
+
+#calendar td:hover {
+    background-color: #FFA500;
+    color: #000;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .left_column, .right_column {
+        width: 100%;
+        margin-bottom: 20px; 
+    }
+
+    .center_column {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .pc-only {
+        display: none;
+    }
+
+    .button-container a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .login {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        width: 100%;
+    }
+}
+
+
 .user-info-container {
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #ccc;
+    background-color: #f0f2f5;
 }
 
 .user-info {
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
 }
 
@@ -289,7 +297,7 @@ body {
 }
 
 .user-info p strong {
-    color: #000000;
+    color: #000;
 }
 
 .user-info h3 {
@@ -298,46 +306,12 @@ body {
 }
 
 .user-info h3 a {
-    color: #ff0000;
+    color: red;
     text-decoration: none;
 }
 
 .user-info h3 a:hover {
     text-decoration: underline;
-    color: #ff0000;
-}
-
-@media screen and (max-width: 768px) {
-    .user_info {
-        width: 90%; 
-        padding: 15px; 
-    }
-}
-
-.user-item {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-}
-
-
-.user-avatar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.user-details {
-    flex: 1;
 }
 
 
@@ -381,4 +355,57 @@ input[type="hidden"] {
 .staff_link a:hover {
     background-color: #ce5d01; 
     color: #000000; 
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #b36500;
 }
