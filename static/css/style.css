@@ -27,6 +27,26 @@ body {
 }
 
 
+.login-container {
+    color: white;
+}
+
+.login-container a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.login-container img {
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+
 .login {
     width: 500px;
     margin: 0 auto; 
@@ -134,6 +154,7 @@ body {
     width: 200px; 
     background-color: #ffffff; 
     padding: 10px;
+    margin-right: 200px;
 }
 
 .left_column a {
@@ -340,8 +361,13 @@ input[type="hidden"] {
     display: none;
 }
 
+
+.main-container {
+    justify-content: center
+}
+
 .staff_link a {
-    display: block;
+    display: inline-block;
     padding: 10px;
     background-color: #ff8800; 
     border-radius: 20px; 
@@ -358,7 +384,7 @@ input[type="hidden"] {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;

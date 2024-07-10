@@ -18,19 +18,32 @@
             </a>
         </div>
         <div class='login-container'>
+            <div class='image-container'>
             {% if user.is_authenticated %}
                 {% if user.profile_picture %}
                     <img src="{{ user.profile_picture.url }}" alt="User Avatar" width="50" height="50">
                 {% endif %}
-                <a href="{% url 'user_info' %}">Witaj, {{ user.username }}</a>
-                <br> <a href="{% url 'logout' %}">Wyłoguj się</a>
+            </div>
+            <div class='link-container'>
+                    <a href="{% url 'user_info' %}">Witaj, {{ user.username }}</a>
+                    <br><a href="{% url 'logout' %}">Wyłoguj się</a>
             {% endif %}
+            </div>
         </div>
     </header>
 
     <div class='main-container'>
         {% if user.is_staff %}
         <div class="staff_link">
+            <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+            <a href="{% url 'user_list' %}">Lista pracowników</a>
+
             <a href="{% url 'user_list' %}">Lista pracowników</a>
         </div>
         {% endif %}

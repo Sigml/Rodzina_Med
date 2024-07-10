@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ list_title }}</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for field in fields %}
+                    <th>{{ field|capfirst }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for el in list %}
+                <tr>
+                    {% for field in fields %}
+                        <td>{{ el|get_field_value:field }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
