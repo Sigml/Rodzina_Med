@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -27,6 +27,7 @@ class DoctorCreateView(AdminRequiredMixin, CreateView):
         return context
     
     
+
 class DoctorListView(ListView):
     model = Doctors
     template_name = 'list_view.html'
@@ -35,20 +36,49 @@ class DoctorListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['list_title'] = 'Lista Lekarzy'
-        context['fields'] = ['first_name', 'last_name', 'specialization', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']
+        context['fields'] = ['first_name', 'last_name', 'specialization', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday',]
+        context['labels'] = {
+            'first_name': 'Imię',
+            'last_name': 'Nazwisko',
+            'specialization': 'Specjalizacja',
+            'monday': 'Poniedziałek',
+            'tuesday': 'Wtorek',
+            'wednesday': 'Środa',
+            'thursday': 'Czwartek',
+            'friday': 'Piątek',
+        }
+
+        doctors = Doctors.objects.all()
+
+        update_urls = []
+        delete_urls = []
+        file_upload = []
+        
+        for doctor in doctors:
+            update_url = reverse_lazy('doctor_update', kwargs={'pk': doctor.pk})
+            delete_url = reverse_lazy('doctor_delete', kwargs={'pk': doctor.pk})
+            file_upload_url = doctor.file_upload.url if doctor.file_upload else None
+            
+            update_urls.append(update_url)
+            delete_urls.append(delete_url)
+            file_upload.append(file_upload_url)
+        
+        context['element'] = zip(doctors, update_urls, delete_urls)
+        
         return context
+    
 
 class DoctorUpdateView(AdminRequiredMixin, UpdateView):
     model = Doctors
     form_class = DoctorCreateForm
     template_name = 'forms.html'
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('doctor_list')
     
     
 class DoctorDeleteView(AdminRequiredMixin, DeleteView):
     model = Doctors
     template_name = 'delete.html'
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('doctor_list')
     
 
 class PostCreateView(AdminRequiredMixin, CreateView):

@@ -39,8 +39,8 @@ urlpatterns = [
     path('users/', UserListView.as_view(), name='user_list'),
     path('doctor_create/', DoctorCreateView.as_view(), name='doctor_create'),
     path('doctor_list/', DoctorListView.as_view(), name='doctor_list'),
-    path('doctor_update/', DoctorUpdateView.as_view(), name='doctor_update'),
-    path('doctor_delete/', DoctorDeleteView.as_view(), name='doctor_delete'),
+    path('doctor_update/<int:pk>/', DoctorUpdateView.as_view(), name='doctor_update'),
+    path('doctor_delete/<int:pk>/', DoctorDeleteView.as_view(), name='doctor_delete'),
     path('post_create/', PostCreateView.as_view(), name='post_create'),
 ]
 

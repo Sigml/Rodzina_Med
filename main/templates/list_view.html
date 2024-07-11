@@ -4,23 +4,28 @@
 {% block content %}
 <div class="container">
     <h2>{{ list_title }}</h2>
-    <table>
-        <thead>
-            <tr>
+    <div class="list-content">
+        {% for el, update_url, delete_url in element %}
+            <ul>
                 {% for field in fields %}
-                    <th>{{ field|capfirst }}</th>
+                    {% with el|get_field_value:field as value %}
+                        {% if value|is_not_null %}
+                            <li><strong>{{ labels|get_item:field|capfirst }}:</strong> {{ value }}</li>
+                        {% endif %}
+                    {% endwith %}
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for el in list %}
-                <tr>
-                    {% for field in fields %}
-                        <td>{{ el|get_field_value:field }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                                {% if el.file_upload %}
+                    <li><strong>Plik do pobrania:</strong> <a href="{{ el.file_upload.url }}" style='color: red;' download> Pobierz plik </a></li>
+                {% endif %}
+            </ul>
+            </ul>
+            <div class='update-url'>
+                <a href="{{ update_url }}" class="btn-update">Aktualizuj dane</a>
+            </div>
+            <div class='delete-url'>
+                <a href="{{ delete_url }}" class="btn-delete">Usuń dane</a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

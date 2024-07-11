@@ -154,7 +154,11 @@ body {
     width: 200px; 
     background-color: #ffffff; 
     padding: 10px;
-    margin-right: 200px;
+
+}
+
+.left_column {
+    margin-right: 150px
 }
 
 .left_column a {
@@ -181,6 +185,7 @@ body {
     background-color: #ffffff; 
     padding: 30px;
     text-align: center;
+    margin-left: 50px
 }
 
 .pc-only {
@@ -434,4 +439,53 @@ textarea {
 
 .btn-primary:hover {
     background-color: #b36500;
+}
+
+h2 {
+    text-align: center;
+    color: #ff8800;
+}
+
+.list-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-content li {
+    margin-bottom: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-update, .btn-delete {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-update {
+    background-color: #28a745; 
+}
+
+.btn-update:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545; 
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
 }
