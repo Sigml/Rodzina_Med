@@ -482,10 +482,69 @@ h2 {
     background-color: #218838;
 }
 
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .btn-delete {
     background-color: #dc3545; 
 }
 
 .btn-delete:hover {
     background-color: #c82333;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #218838;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.step-links {
+    display: inline-block;
+}
+
+.step-links a {
+    padding: 8px 16px;
+    background-color: #ff8800;
+    color: #fff;
+    border: 1px solid #ff8800;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.step-links a:hover {
+    background-color: #ce5d01;
+    border-color: #ce5d01;
+}
+
+.current {
+    margin: 0 10px;
+    font-weight: bold;
 }

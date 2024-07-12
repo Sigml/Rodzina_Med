@@ -5,27 +5,48 @@
 <div class="container">
     <h2>{{ list_title }}</h2>
     <div class="list-content">
-        {% for el, update_url, delete_url in element %}
+        {% if user.is_staff and create_url %}
+            <a href="{{ create_url }}" class="btn-update">Dodaj lekarza</a>
+        {% endif %}
+        {% for doctor, update_url, delete_url, file_upload_url in element %}
             <ul>
                 {% for field in fields %}
-                    {% with el|get_field_value:field as value %}
+                    {% with doctor|get_field_value:field as value %}
                         {% if value|is_not_null %}
                             <li><strong>{{ labels|get_item:field|capfirst }}:</strong> {{ value }}</li>
                         {% endif %}
                     {% endwith %}
                 {% endfor %}
-                                {% if el.file_upload %}
-                    <li><strong>Plik do pobrania:</strong> <a href="{{ el.file_upload.url }}" style='color: red;' download> Pobierz plik </a></li>
+                {% if file_upload_url %}
+                    <li><strong>{{ labels|get_item:"file_upload_url"|capfirst }}:</strong> <a href="{{ file_upload_url }}" class='btn-update' download>Pobierz plik</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                    <div class='update-url'>
+                        <a href="{{ update_url }}" class="btn-update">Aktualizuj dane</a>
+                    </div>
+                    <div class='delete-url'>
+                        <a href="{{ delete_url }}" class="btn-delete">Usuń dane</a>
+                    </div>
                 {% endif %}
             </ul>
-            </ul>
-            <div class='update-url'>
-                <a href="{{ update_url }}" class="btn-update">Aktualizuj dane</a>
-            </div>
-            <div class='delete-url'>
-                <a href="{{ delete_url }}" class="btn-delete">Usuń dane</a>
-            </div>
         {% endfor %}
     </div>
 </div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Popzednia</a>
+        {% endif %}
+
+        <span class="current">
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Następna</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
+

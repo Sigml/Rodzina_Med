@@ -37,14 +37,6 @@
         <div class="staff_link">
             <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
             <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
-
-            <a href="{% url 'user_list' %}">Lista pracowników</a>
         </div>
         {% endif %}
 
@@ -60,12 +52,23 @@
             <a href='/' class="staff_link">
                 Strona glówna    <img src="/media/base/logo Rodzina Med.jpg" alt="Rodzina Med Logo" style="margin-left: 10px;" width="20" height="20">
             </a>
-            <a href=''>przytisk 2</a>
-            <a href=''>przytisk 3</a>
-            <a href=''>przytisk 4</a>
-            <a href=''>przytisk 5</a>
-            <a href=''>przytisk 6</a>
-            <a href=''>przytisk 7</a>
+            <a href=''>Oferta</a>
+            <a href=''>Deklaracja poz</a>
+            <a href=''>Rezerwuj teleporadę</a>
+            <a href=''>Rodo</a>
+            <a href=''>Przygotowanie do badań</a>
+            <a href=''>Obowiązkowe szczepienia ochronne</a>
+            <a href=''>Zalecane szczepienia ochronne</a>
+            <a href=''>Kontakt z nami</a>
+            <a href=''>Media społecznościowe</a>
+            Panel Administracijny
+            {% if user.is_staff %}
+            
+                <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
+                <a href="{% url 'user_list' %}">Lista pracowników</a>
+            
+            {% endif %}
+
         </div>
 
         <div class='center_column'>

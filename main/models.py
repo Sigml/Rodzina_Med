@@ -50,6 +50,11 @@ class Contact(models.Model):
     number_phone_1 = models.CharField(max_length=15)
     number_phone_2 = models.CharField(max_length=15, null=True)
     email = models.CharField(max_length=64)
+    monday = models.CharField(max_length=20, null=True)
+    tuesday = models.CharField(max_length=20, null=True)
+    wednesday = models.CharField(max_length=20, null=True)
+    thursday = models.CharField(max_length=20, null=True)
+    friday = models.CharField(max_length=20, null=True)
 
 
 class Rodo(models.Model):
