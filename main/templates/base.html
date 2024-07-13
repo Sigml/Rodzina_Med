@@ -8,14 +8,17 @@
     <title>Rodzina Med</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'script/script.js' %}"></script> 
+
 </head>
 
 <body>
     <header class='header-container'>
-        <div class='logo'>
-            <a href='/' class="logo-link">
-                <img src="/media/base/logo Rodzina Med.jpg" alt="Rodzina Med Logo" width="150" height="150">
-            </a>
+        <div class="logo-container">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <img src="/media/base/naglowek.jpg" alt="Rodzina Med Logo">
+                </a>
+            </div>
         </div>
         <div class='login-container'>
             <div class='image-container'>
@@ -26,57 +29,47 @@
             </div>
             <div class='link-container'>
                     <a href="{% url 'user_info' %}">Witaj, {{ user.username }}</a>
-                    <br><a href="{% url 'logout' %}">Wyłoguj się</a>
+                    <a href="{% url 'logout' %}">Wyłoguj się</a>
             {% endif %}
             </div>
         </div>
     </header>
-
-    <div class='main-container'>
-        {% if user.is_staff %}
+    {% if user.is_staff %}
+    <div class="staff-link-container">
         <div class="staff_link">
+            <a href="{% url 'post_create' %}">Dodaj post</a>
+            <a href="{% url 'message_list' %}">Lista komunikatów</a>
+            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
+            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
+            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
             <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
             <a href="{% url 'user_list' %}">Lista pracowników</a>
-        </div>
-        {% endif %}
 
-        <div class='top_column'>
-            <div class="button-container">
-                <a href=''>Lekarz rodziny</a>
-                <a href=''>Pediatra</a>
-                <a href=''>Pielęgniarka środowiskowa</a>
-            </div>
         </div>
+    </div>
+    {% endif %}
+    <div class='main-container'>
 
         <div class='left_column'>
             <a href='/' class="staff_link">
-                Strona glówna    <img src="/media/base/logo Rodzina Med.jpg" alt="Rodzina Med Logo" style="margin-left: 10px;" width="20" height="20">
+                Strona glówna <img src="/media/base/logo Rodzina Med.jpg" alt="Rodzina Med Logo" style="margin-left: 10px;" width="20" height="20">
             </a>
-            <a href=''>Oferta</a>
+            <a href="{% url 'offers' %}">Oferta</a>
             <a href=''>Deklaracja poz</a>
-            <a href=''>Rezerwuj teleporadę</a>
-            <a href=''>Rodo</a>
-            <a href=''>Przygotowanie do badań</a>
-            <a href=''>Obowiązkowe szczepienia ochronne</a>
-            <a href=''>Zalecane szczepienia ochronne</a>
-            <a href=''>Kontakt z nami</a>
-            <a href=''>Media społecznościowe</a>
-            Panel Administracijny
-            {% if user.is_staff %}
-            
-                <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
-                <a href="{% url 'user_list' %}">Lista pracowników</a>
-            
-            {% endif %}
-
+            <a href='{% url "rodo_list" %}'>Rodo</a>
+            <a href="{% url 'intake_point' %}">Punkt pobrań</a>
+            <a href="{% url 'vaccinations' %}">Szczepienia </a>
+            <a href="{% url 'reglamin_list' %}">Regulamin</a>
+            <a href="{% url 'contact_list' %}">Kontakt z nami</a>
+            <a href="{% url 'file_list' %}">Pliki do pobrania</a>
         </div>
-
+    
         <div class='center_column'>
+            
             {% block content %}
-
             {% endblock %} 
         </div>
-
+    
         <div class='right_column'>
             <div class="pc-only">
                 <div id="clock"></div>
@@ -87,11 +80,8 @@
                 </div>
                 <div id="calendar"></div>
             </div>
-
         </div>
-
-
     </div>
-
-</body>
-</html>
+    
+    </body>
+    </html>

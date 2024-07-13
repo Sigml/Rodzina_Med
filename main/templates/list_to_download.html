@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+<div class="container-to-download">
+    <h2>{{ list_title }}</h2>
+    <div class="list-to-download">
+        {% if user.is_staff and create_url %}
+            <a href="{{ create_url }}" class="btn-update">{{ button_name }}</a>
+        {% endif %}
+        {% for file_info in file_elements %}
+            <div class="list-card-download">
+                <ul>
+                    {% for file in file_info.fields %}
+                        <li>
+                            <strong>{{ file.label }}:</strong>
+                            <a href="{{ file.url }}" class='btn-update' download>Pobierz plik</a>
+                        </li>
+                    {% endfor %}
+                    {% if user.is_staff %}
+                    <div class='button-card'>
+                        <div class='update-url'>
+                            <a href="{{ file_info.update_url }}" class="btn-update">Aktualizuj dane</a>
+                        </div>
+                        <div class='delete-url'>
+                            <a href="{{ file_info.delete_url }}" class="btn-delete">Usuń dane</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

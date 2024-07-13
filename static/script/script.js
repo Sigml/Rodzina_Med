@@ -70,3 +70,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('prev-month').addEventListener('click', prevMonth);
     document.getElementById('next-month').addEventListener('click', nextMonth);
 });
+
+const dateInput = document.getElementById('date');

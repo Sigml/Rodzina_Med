@@ -4,25 +4,25 @@ from .models import Doctors, Post, Message, Contact, Rodo, Reglamin, File_to_dow
 class PostCreateForm(forms.ModelForm):
     class Meta: 
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'file']
         labels = {
             'title':'Naglówek',
-            'content':'Treść'
+            'content':'Treść',
+            'file':'Dodaj grafikę'
         }
         widgets = {
             'title':forms.TextInput(attrs={
                 'class':'form-control'}), 
-            'content':forms.TextInput(attrs={
+            'content':forms.Textarea(attrs={
                 'class':'form-control'}), 
+            'file': forms.FileInput(attrs={
+                'class': 'form-control'}),
         }
         error_messages = {
             'title': {
                 'required': 'To pole jest wymagane.',
                 'max_length': 'Maksymalna długość to 200 znaków.'
             },
-            'content': {
-                'required': 'To pole jest wymagane.'
-            }
         }
         
 
@@ -43,16 +43,26 @@ class DoctorCreateForm(forms.ModelForm):
             'file_upload': 'Plik do pobrania',
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'specialization': forms.Select(attrs={'class': 'form-control'}),
-            'monday': forms.TextInput(attrs={'class': 'form-control'}),
-            'tuesday': forms.TextInput(attrs={'class': 'form-control'}),
-            'wednesday': forms.TextInput(attrs={'class': 'form-control'}),
-            'thursday': forms.TextInput(attrs={'class': 'form-control'}),
-            'friday': forms.TextInput(attrs={'class': 'form-control'}),
-            'file_upload': forms.FileInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control'}),
+            'specialization': forms.Select(attrs={
+                'class': 'form-control'}),
+            'monday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'tuesday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'wednesday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'thursday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'friday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'file_upload': forms.FileInput(attrs={
+                'class': 'form-control'}),
         }
         error_messages = {
             'first_name': {
@@ -95,8 +105,8 @@ class MessageCreateForm(forms.ModelForm):
         labels = {
             'title':'Naglówek',
             'text':'Treść',
-            'date_start':'Data_początku', 
-            'date_end':'Data_konca', 
+            'date_start':'Data początku', 
+            'date_end':'Data konca', 
         }
         widgets = {
             'title':forms.TextInput(attrs={
@@ -104,9 +114,11 @@ class MessageCreateForm(forms.ModelForm):
             'text':forms.Textarea(attrs={
                 'class':'form-control'}), 
             'date_start':forms.DateInput(attrs={
-                'class':'form-control'}), 
+                'class':'form-control',
+                'type':'date'}), 
             'date_end':forms.DateInput(attrs={
-                'class':'form-control'}), 
+                'class':'form-control',
+                'type':'date'}), 
         }
         error_messages = {
             'title': {
@@ -127,11 +139,17 @@ class MessageCreateForm(forms.ModelForm):
 class ContactCreateForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['number_phone_1', 'number_phone_2', 'email']
+        fields = ['number_phone_1', 'number_phone_2', 'email', 'email_2', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']
         labels = {
             'number_phone_1':'Numer kontaktowy',
             'number_phone_2':'Numer kontaktowy',
-            'email':'Email'
+            'email':'Email do rejestracji',
+            'email_2':'Email do biura',
+            'monday': 'Poniedziałek',
+            'tuesday': 'Wtorek',
+            'wednesday': 'Środa',
+            'thursday': 'Czwartek',
+            'friday': 'Piątek',
         }
         widgets = {
             'number_phone_1':forms.TextInput(attrs={
@@ -140,6 +158,16 @@ class ContactCreateForm(forms.ModelForm):
                 'class':'form-control'}), 
             'email':forms.TextInput(attrs={
                 'class':'form-control'}), 
+            'monday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'tuesday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'wednesday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'thursday': forms.TextInput(attrs={
+                'class': 'form-control'}),
+            'friday': forms.TextInput(attrs={
+                'class': 'form-control'}),
         }
         
         error_messages = {
@@ -206,6 +234,7 @@ class ReglaminCreateForm(forms.ModelForm):
         
 class FileToDownloadCreateForm(forms.ModelForm):
     class Meta:
+        model = File_to_download
         fields = ['rodo','reglamin','doctor','nurse','instruction','calendar','application_for_authorisation',]
         labels = {
             'rodo':'RODO',
@@ -215,4 +244,27 @@ class FileToDownloadCreateForm(forms.ModelForm):
             'instruction': 'Instrukcja wypelnenia deklaracji',
             'calendar': 'kalendarz szczepień',
             'application_for_authorisation':'pelnomocnictwo',
+        }
+        wigets = {
+            'rodo':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'reglamin':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'doctor':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'nurse':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'instruction':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'calendar':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
+            'application_for_authorisation':forms.FileInput(attrs={
+                'class':'form-control'
+            }),
         }

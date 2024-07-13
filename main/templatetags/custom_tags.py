@@ -17,3 +17,7 @@ def is_not_null(value):
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+@register.filter
+def get_day(doctor, day):
+    return getattr(doctor, day, None)
