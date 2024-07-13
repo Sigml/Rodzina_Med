@@ -26,7 +26,7 @@ from main.views import (main, DoctorCreateView, DoctorListView, DoctorUpdateView
                         ContactListView, ContactCreateView, ContactUpdateView, ContactDeleteView, RodoCreateView, RodoListView,
                         RodoUpdateView, RodoDeleteView, ReglaminCreateView, ReglaminListView, ReglaminUpdateView, ReglaminDeleteView,
                         FileToDownloadCreateView, FileToDownloadListView, FileToDownloadUpdateView, FileToDownloadDeleteView,
-                        OffersListView, VaccinationsListView
+                        OffersListView, DeclarationListView
                         )
 
 urlpatterns = [
@@ -55,15 +55,15 @@ urlpatterns = [
     path('message_update/<int:pk>/', MessageUpdateView.as_view(), name='message_update'),
     path('message_delete/<int:pk>/', MessageDeleteView.as_view(), name='message_delete'),
     path('contact_create/', ContactCreateView.as_view(), name='contact_create'),
-    path('contact_list/', ContactListView.as_view(), name='contact_list'),
+    path('contact/', ContactListView.as_view(), name='contact_list'),
     path('contact_update/<int:pk>/', ContactUpdateView.as_view(), name='contact_update'),
     path('contact_delete/<int:pk>/', ContactDeleteView.as_view(), name='contact_delete'),
     path('rodo_create/', RodoCreateView.as_view(), name='rodo_create'),
-    path('rodo_list/', RodoListView.as_view(), name='rodo_list'),
+    path('rodo/', RodoListView.as_view(), name='rodo_list'),
     path('rodo_update/<int:pk>/', RodoUpdateView.as_view(), name='rodo_update'),
     path('rodo_delete/<int:pk>/', RodoDeleteView.as_view(), name='rodo_delete'),
     path('reglamin_create/', ReglaminCreateView.as_view(), name='reglamin_create'),
-    path('reglamin_list/', ReglaminListView.as_view(), name='reglamin_list'),
+    path('reglamin/', ReglaminListView.as_view(), name='reglamin_list'),
     path('reglamin_update/<int:pk>/', ReglaminUpdateView.as_view(), name='reglamin_update'),
     path('reglamin_delete/<int:pk>/', ReglaminDeleteView.as_view(), name='reglamin_delete'),
     path('file_create/', FileToDownloadCreateView.as_view(), name='file_create'),
@@ -71,8 +71,9 @@ urlpatterns = [
     path('file_update/<int:pk>/', FileToDownloadUpdateView.as_view(), name='file_update'),
     path('file_delete/<int:pk>/', FileToDownloadDeleteView.as_view(), name='file_delete'),
     path('offers/', OffersListView.as_view(), name='offers'),
-    path('vaccinations/', VaccinationsListView.as_view(), name='vaccinations'),
+    path('vaccinations/',TemplateView.as_view(template_name='vaccinations.html'), name='vaccinations'),
     path('intake_point/', TemplateView.as_view(template_name='intake_point.html'), name='intake_point'),
+    path('declaration/', DeclarationListView.as_view(), name='declaration')
 ]
 
 

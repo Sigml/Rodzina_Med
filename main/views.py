@@ -546,8 +546,38 @@ class OffersListView(ListView):
         context['doctor_days'] = ["monday", "tuesday", "wednesday", "thursday", "friday"]
         return context
 
-    
-    
-class VaccinationsListView(ListView):
+class DeclarationListView(ListView):
     model = File_to_download
-    template_name = 'vaccinations.html'
+    template_name = 'declaration.html'
+    context_object_name = 'list'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_title'] = 'Pliki do pobrania'
+        context['fields'] = ['doctor', 'nurse', 'instruction']
+        context['labels'] = {
+            'doctor': 'Deklaracja POZ (lekarz)',
+            'nurse': 'Deklaracja POZ (pielęgniarka)',
+            'instruction': 'Instrukcja wypełnienia deklaracji',
+        }
+
+        elements = context['list']
+        file_elements = []
+
+        for element in elements:
+            file_info = {'fields': []} 
+            
+            for field in context['fields']:
+                file_url = getattr(element, field).url if getattr(element, field) else None
+                if file_url:
+                    file_info['fields'].append({
+                        'label': context['labels'][field],
+                        'url': file_url,
+                    })
+            
+            file_elements.append(file_info)
+
+        context['file_elements'] = file_elements
+
+        return context
+    

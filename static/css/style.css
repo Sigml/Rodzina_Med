@@ -219,13 +219,28 @@ input[type="file"] {
 .left_column a:hover {
     background-color: #ce5d01; 
 }
-
+ 
 .right_column {
     width: 200px; 
     background-color: #ffffff; 
     padding: 30px;
     text-align: center;
     margin-left: 50px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin-right: 10px; 
+    color: #ce5d01;
+    font-size: 24px;
+    text-decoration: none; 
+}
+
+.social-links a:hover {
+    color: #000000;
 }
 
 .pc-only {
@@ -715,7 +730,8 @@ h2 {
 .offers {
     margin: 20px;
     font-family: Arial, sans-serif;
-    text-align: left;
+    text-align: left; 
+    color: black; 
 }
 
 .offer-section {
@@ -740,12 +756,20 @@ h2 {
     margin-bottom: 5px;
 }
 
+.doctor-box {
+    border: 1px solid #ff8800;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px; 
+    background-color: #f9f9f9; 
+}
+
 .doctor-item {
-    margin-left: 20px;
+    margin-left: 0; 
 }
 
 .doctor-item strong {
-    color: #000000;
+    color: rgb(0, 0, 0); 
 }
 
 .working-hours-title {
@@ -753,14 +777,101 @@ h2 {
     margin-top: 10px;
 }
 
-.working-hours li {
-    margin-left: 30px; 
+.working-hours {
+    margin-left: 20px; 
 }
 
 a {
-    color: #ff6600;
+    color: blue; 
+    text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+.intake_point {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    color: black; 
+    text-align: left; 
+}
+
+.intake_point h2,
+.intake_point h3,
+.intake_point h4 {
+    color: #ff8800; 
+    margin-bottom: 15px;
+    margin-top: 20px; 
+}
+
+.intake_point p,
+.intake_point ul,
+.intake_point ol {
+    line-height: 1.6; 
+    margin-bottom: 10px;
+}
+
+.intake_point ul,
+.intake_point ol {
+    padding-left: 20px; 
+}
+
+.intake_point a {
+    color: blue; 
+    text-decoration: none;
+}
+
+.intake_point a:hover {
+    text-decoration: underline; 
+}
+
+.vaccian {
+    text-align: center; 
+    margin: 20px; 
+}
+
+.vaccian img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.declaration {
+    margin: 20px; 
+    font-size: 16px; 
+    color: #333; 
+    line-height: 1.6; 
+    text-align: left; 
+}
+
+.declaration h2 {
+    color: #e67e22; 
+    margin-bottom: 15px; 
+}
+
+.declaration p {
+    margin-bottom: 20px; 
+}
+
+.declaration-button {
+    margin-top: 20px; 
+}
+
+.file-item {
+    margin-bottom: 40px; 
+}
+
+.btn-download {
+    text-decoration: none;
+    background-color: #e67e22; 
+    color: white; 
+    padding: 8px 12px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+    background-color: #d35400; 
 }

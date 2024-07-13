@@ -12,10 +12,12 @@
             <li>b) E-skierowania</li>
             <li>c) E-recepty</li>
         </ul>
-        <ul class="doctor-list">
-            {% for doctor in doctors_list %}
-                {% if doctor.specialization == "lekarz rodziny" %}
-                    <li class="doctor-item"><strong>Lekarz: {{ doctor.first_name }} {{ doctor.last_name }}</strong></li>
+        {% for doctor in doctors_list %}
+            {% if doctor.specialization == "lekarz rodziny" %}
+                <div class="doctor-box">
+                    <div class="doctor-item">
+                        <strong>{{ doctor.first_name }} {{ doctor.last_name }}</strong>
+                    </div>
                     {% if doctor.monday or doctor.tuesday or doctor.wednesday or doctor.thursday or doctor.friday %}
                         <p class="working-hours-title">Godziny pracy:</p>
                         <ul class="working-hours">
@@ -28,9 +30,9 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <div class="offer-section">
@@ -39,10 +41,12 @@
             <li>a) Wizyty i wizyty domowe</li>
             <li>b) Kwalifikacja do obowiązkowych i zalecanych szczepień ochronnych</li>
         </ul>
-        <ul class="doctor-list">
-            {% for doctor in doctors_list %}
-                {% if doctor.specialization == "pediatra" %}
-                    <li class="doctor-item"><strong>Pediatra: {{ doctor.first_name }} {{ doctor.last_name }}</strong></li>
+        {% for doctor in doctors_list %}
+            {% if doctor.specialization == "pediatra" %}
+                <div class="doctor-box">
+                    <div class="doctor-item">
+                        <strong>{{ doctor.first_name }} {{ doctor.last_name }}</strong>
+                    </div>
                     {% if doctor.monday or doctor.tuesday or doctor.wednesday or doctor.thursday or doctor.friday %}
                         <p class="working-hours-title">Godziny pracy:</p>
                         <ul class="working-hours">
@@ -55,9 +59,9 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <div class="offer-section">
@@ -67,10 +71,12 @@
             <li>b) <a href="{% url 'vaccinations' %}">Obowiązkowe szczepienia ochronne</a></li>
             <li>c) <a href="{% url 'vaccinations' %}">Zalecane szczepienia ochronne</a></li>
         </ul>
-        <ul class="doctor-list">
-            {% for doctor in doctors_list %}
-                {% if doctor.specialization == "pielęgniarka środowiskowa" %}
-                    <li class="doctor-item"><strong>Pielęgniarka: {{ doctor.first_name }} {{ doctor.last_name }}</strong></li>
+        {% for doctor in doctors_list %}
+            {% if doctor.specialization == "pielęgniarka środowiskowa" %}
+                <div class="doctor-box">
+                    <div class="doctor-item">
+                        <strong>{{ doctor.first_name }} {{ doctor.last_name }}</strong>
+                    </div>
                     {% if doctor.monday or doctor.tuesday or doctor.wednesday or doctor.thursday or doctor.friday %}
                         <p class="working-hours-title">Godziny pracy:</p>
                         <ul class="working-hours">
@@ -83,9 +89,9 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <div class="offer-section">

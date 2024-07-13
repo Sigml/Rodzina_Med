@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='declaration'>
+
+    <h2>Deklaracja wyboru podstawowej opieki zdrowotnej (POZ)</h2>
+    <p>
+        Deklaracja wyboru podstawowej opieki zdrowotnej (POZ) to kluczowy krok dla nowych pacjentów. Umożliwia ona wybór lekarza rodzinnego, co zapewnia stały kontakt i lepsze zrozumienie historii zdrowia.
+    </p>
+    <p>
+        Dzięki deklaracji pacjenci mają dostęp do szerokiego zakresu usług medycznych oraz koordynacji opieki, co ułatwia uzyskiwanie skierowań do specjalistów i monitorowanie zdrowia.
+    </p>
+    <p>
+        Dodatkowo, POZ zapewnia bezpieczeństwo, umożliwiając szybką reakcję w razie problemów zdrowotnych oraz edukację zdrowotną, która zwiększa świadomość pacjentów.
+    </p>
+    <p>
+        Deklaracja POZ jest istotnym elementem zapewniającym ciągłą i kompleksową opiekę zdrowotną.
+    </p>
+    <div class='declaration-button'>
+        {% for file_info in file_elements %}
+            {% for file in file_info.fields %}
+                <div>
+                    <strong>{{ file.label }}:</strong>
+                    <a href="{{ file.url }}" class="btn-download" download>Pobierz</a>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock  %}

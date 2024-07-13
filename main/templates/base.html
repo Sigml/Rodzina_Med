@@ -8,6 +8,7 @@
     <title>Rodzina Med</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'script/script.js' %}"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -39,9 +40,6 @@
         <div class="staff_link">
             <a href="{% url 'post_create' %}">Dodaj post</a>
             <a href="{% url 'message_list' %}">Lista komunikatów</a>
-            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
-            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
-            {% comment %} <a href="{% url '/' %}"> </a> {% endcomment %}
             <a href="{% url 'doctor_list' %}">Lista lekarzy</a>
             <a href="{% url 'user_list' %}">Lista pracowników</a>
 
@@ -55,7 +53,7 @@
                 Strona glówna <img src="/media/base/logo Rodzina Med.jpg" alt="Rodzina Med Logo" style="margin-left: 10px;" width="20" height="20">
             </a>
             <a href="{% url 'offers' %}">Oferta</a>
-            <a href=''>Deklaracja poz</a>
+            <a href="{% url 'declaration' %}">Deklaracja poz</a>
             <a href='{% url "rodo_list" %}'>Rodo</a>
             <a href="{% url 'intake_point' %}">Punkt pobrań</a>
             <a href="{% url 'vaccinations' %}">Szczepienia </a>
@@ -79,6 +77,15 @@
                     <button id="next-month">&gt;</button>
                 </div>
                 <div id="calendar"></div>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61562463866923" target="_blank">
+                        <i class="fab fa-facebook"></i> Rodzina Med
+                    </a>
+                    <a href="https://www.instagram.com/rodzina_med/" target="_blank">
+                        <i class="fab fa-instagram"></i> Rodzina Med
+                    </a>
+                </div>
             </div>
         </div>
     </div>
