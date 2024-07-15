@@ -57,7 +57,7 @@ class Contact(models.Model):
     number_phone_1 = models.CharField(max_length=15)
     number_phone_2 = models.CharField(max_length=15, null=True, blank=True)
     email = models.CharField(max_length=64)
-    email_2 = models.CharField(max_length=64, default='Null')
+    email_2 = models.CharField(max_length=64,null=True, blank=True)
     monday = models.CharField(max_length=20, null=True, blank=True)
     tuesday = models.CharField(max_length=20, null=True, blank=True)
     wednesday = models.CharField(max_length=20, null=True, blank=True)
