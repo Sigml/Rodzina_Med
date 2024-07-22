@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from .secrets import SECRET_KEY as LOCAL_SECRET_KEY, EMAIL_HOST_USER as LOCAL_EMAIL_USER, EMAIL_HOST_PASSWORD as LOCAL_EMAIL_PASSWORD
 import os
+from .database_settings import DATABASES
  
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,9 +31,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', LOCAL_EMAIL_PASSWORD)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['rodzinamed.pl'] #wpisz domene
+ALLOWED_HOSTS = ['serwer2051705.home.pl']
 
 SECRET_KEY=SECRET_KEY
 EMAIL_HOST_USER = EMAIL_HOST_USER
@@ -91,12 +92,7 @@ WSGI_APPLICATION = 'Rodzina_med.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
